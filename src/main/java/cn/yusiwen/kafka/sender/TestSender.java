@@ -64,12 +64,12 @@ public class TestSender {
                 .subscribe(r -> {
                     RecordMetadata metadata = r.recordMetadata();
                     Instant timestamp = Instant.ofEpochMilli(metadata.timestamp());
-                    System.out.printf("Message %d sent successfully, topic-partition=%s-%d offset=%d timestamp=%s\n",
+                    log.info(String.format("Message %d sent successfully, topic-partition=%s-%d offset=%d timestamp=%s\n",
                             r.correlationMetadata(),
                             metadata.topic(),
                             metadata.partition(),
                             metadata.offset(),
-                            dateFormat.format(ZonedDateTime.ofInstant(timestamp, ZoneId.systemDefault())));
+                            dateFormat.format(ZonedDateTime.ofInstant(timestamp, ZoneId.systemDefault()))));
                     latch.countDown();
                 });
     }
@@ -134,7 +134,7 @@ public class TestSender {
         TestSender producer = new TestSender(brokers);
         producer.sendMessages(topic, count, latch, input);
         if (!latch.await(30, TimeUnit.SECONDS)) {
-            log.warn("latch.wati() Interrupted");
+            log.warn("latch.wait() Interrupted");
         }
         producer.close();
     }

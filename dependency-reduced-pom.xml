@@ -11,15 +11,38 @@
         <version>3.4.1</version>
         <executions>
           <execution>
+            <id>sender</id>
             <phase>package</phase>
             <goals>
               <goal>shade</goal>
             </goals>
+            <configuration>
+              <finalName>TestSender</finalName>
+              <transformers>
+                <transformer>
+                  <mainClass>cn.yusiwen.kafka.sender.TestSender</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+          <execution>
+            <id>server</id>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <finalName>TestServer</finalName>
+              <transformers>
+                <transformer>
+                  <mainClass>cn.yusiwen.kafka.server.TestServer</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
           </execution>
         </executions>
         <configuration>
           <minimizeJar>true</minimizeJar>
-          <finalName>TestSender</finalName>
           <filters>
             <filter>
               <artifact>*:*</artifact>
@@ -43,15 +66,29 @@
                 <exclude>release-timestamp*</exclude>
                 <exclude>latestchanges.*</exclude>
                 <exclude>log4j2.springboot</exclude>
+                <exclude>THIRD-PARTY</exclude>
               </excludes>
             </filter>
           </filters>
-          <transformers>
-            <transformer>
-              <mainClass>cn.yusiwen.kafka.sender.TestSender</mainClass>
-            </transformer>
-          </transformers>
         </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <appendAssemblyId>false</appendAssemblyId>
+              <descriptors>
+                <descriptor>src/main/assembly/distribution.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
@@ -103,6 +140,11 @@
         <groupId>io.projectreactor.kafka</groupId>
         <artifactId>reactor-kafka</artifactId>
         <version>1.3.17</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.annotation</groupId>
+        <artifactId>javax.annotation-api</artifactId>
+        <version>1.3.2</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>

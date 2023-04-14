@@ -1,0 +1,21 @@
+{
+  "data": {
+    "PK_Type": {
+      "Name": "GET_PARA",
+      "Code": "4301"
+    },
+    "Info": {
+      "ReqNo": "1",
+      "TimeStamp": "2023-03-28 15:21:12",
+      "TaskID": "25ec9dd2d60a4a1a9a1f52916f66ae6d",
+      "FSUID": "34072143800049",
+      "FSUCode": "34072143800049",
+      "FSUType": "PM5000-PRO",
+      "FSUManufactor": "YA",
+      "IDs": [
+        "451609001"
+      ]
+    }
+  },
+  "fsuIp": "192.168.8.45"
+}
