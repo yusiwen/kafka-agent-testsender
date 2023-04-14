@@ -21,7 +21,7 @@ public class TestServer {
         HttpServer httpServer = HttpServer.create().port(port)
                 .route(routes -> routes.post("/receive", (req, res) -> {
                     int c = count.incrementAndGet();
-                    System.out.println(c);
+                    System.out.println("Received packages count: " + c);
                     return res.sendString(Mono.just(MSG));
                 }));
         httpServer.warmup().block();
