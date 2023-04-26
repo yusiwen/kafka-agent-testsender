@@ -3,7 +3,30 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.yusiwen</groupId>
     <artifactId>kafka-agent-testsender</artifactId>
-    <version>1.0</version>
+    <version>1.0.0-SNAPSHOT</version>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:ssh://git@github.com/yusiwen/kafka-agent-testsender.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/yusiwen/kafka-agent-testsender.git</developerConnection>
+        <url>https://github.com/yusiwen/kafka-agent-testsender</url>
+        <tag>HEAD</tag>
+    </scm>
+    <developers>
+        <developer>
+            <id>yusiwen</id>
+            <name>Siwen Yu</name>
+            <email>yusiwen@gmail.com</email>
+        </developer>
+    </developers>
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/yusiwen/kafka-agent-testsender/issues</url>
+    </issueManagement>
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -11,6 +34,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+        <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
+        <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
+        <maven-release-plugin.version>3.0.0</maven-release-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -205,6 +232,36 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <scmCommentPrefix>release</scmCommentPrefix>
+                    <scmDevelopmentCommitComment>@{prefix}: prepare for next development iteration</scmDevelopmentCommitComment>
+                    <scmReleaseCommitComment>@{prefix}: release @{releaseLabel}</scmReleaseCommitComment>
+                </configuration>
             </plugin>
         </plugins>
     </build>
