@@ -5,7 +5,7 @@
     <name>kafka-agent-testsender</name>
     <description>Tester for my kafka http agent</description>
     <url>https://github.com/yusiwen/kafka-agent-testsender</url>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <inceptionYear>2023</inceptionYear>
     <licenses>
         <license>
@@ -17,7 +17,7 @@
         <connection>scm:git:https://github.com/yusiwen/kafka-agent-testsender.git</connection>
         <developerConnection>scm:git:https://github.com/yusiwen/kafka-agent-testsender.git</developerConnection>
         <url>https://github.com/yusiwen/kafka-agent-testsender</url>
-        <tag>v1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <developers>
         <developer>
