@@ -3,7 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.yusiwen</groupId>
     <artifactId>kafka-agent-testsender</artifactId>
+    <name>kafka-agent-testsender</name>
+    <description>Tester for my kafka http agent</description>
+    <url>https://github.com/yusiwen/kafka-agent-testsender</url>
     <version>1.0.0-SNAPSHOT</version>
+    <inceptionYear>2023</inceptionYear>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
